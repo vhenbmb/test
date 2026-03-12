@@ -1,2 +1,100 @@
 copy text here
 Vhen.txt
+@core baba
+conf t
+monitor session 1 source interface fa0/3,fa0/5, fa0/7
+monitor session 1 destination interface fa0/1
+end
+
+conf t
+no monitor session 1
+end
+
+csim start 8200
+
+
+
+sudo su
+kali 
+yersina -G
+
+root
+C1sc0123
+
+http://192.168.102.133/otrs/index.pl
+admin
+C1sc0123
+
+http://192.168.102.133/otrs/customer.pl
+user1
+C1sc0123
+
+!@wazuh creds
+
+root
+C1sc0123
+sudo systemctl stop firewalld
+ip addr
+
+website
+admin
+C1sc0123..
+
+<directories realtime="yes" report_changes="yes" check_all="yes">C:\Users\Administrator\Desktop\vhen\</directories>
+
+!@elastic cred
+root
+C1sc0123
+
+website : http//ipaddress:5601
+
+elastic/admin
+C1sc0123
+
+conf t
+line vty 0 14
+exec-timeout 0 0
+login local
+end
+
+Vhen2.txt
+sudo systemctl start elasticsearch.service 
+
+conf t
+int g1
+ip addr dhcp
+no shut
+end
+sh ip int brief
+
+conf t
+logging on
+logging host 208.8.8.133 transport udp port 9001
+logging trap informational
+end
+
+
+conf t
+archive
+log config
+logging enable
+notify syslog
+end
+
+conf t
+login on-failure log
+login on-success log
+end
+
+conf t
+access-list 100 deny ip any host 208.8.8.140 log
+acces-list 100 permit ip any any
+interface  g1
+ip access-group 100 in
+end
+
+conf t
+int g0/0
+no ip access-group 100 in
+end
+
