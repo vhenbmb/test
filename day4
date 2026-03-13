@@ -1,1 +1,32 @@
+@cisco
+conf t
+aaa new-model
+radius-server host 10.82.1.8 key keykeymo
+ip radius source vlan 1
+aaa authorization exec default group radius
+aaa authentication login default group radius local
+line vty 0 14
+login authentication default
+end
 
+@windows
+shell:priv-lvl=15
+
+Set-NetFirewallProfile -Name private,domain,public -Enabled false
+
+root
+zabbix
+
+
+conf t
+int g1
+ip addr dhcp
+no shut
+
+!@put in for snmpv2 csrv1000v
+access-list 10 permit 192.168.1.10
+snmp-server community public RO 10
+
+!@!@ SNMPV3 csrv1000v
+snmp-server group zabbix v3 priv
+snmp-server  user admin zabbix ve auth sha C1sc0123 priv aes 128 C1sc0123
