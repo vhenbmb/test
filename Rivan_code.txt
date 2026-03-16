@@ -36,7 +36,8 @@ C1sc0123
 sudo systemctl stop firewalld
 ip addr
 
-website
+!@wazuh website
+
 admin
 C1sc0123..
 
